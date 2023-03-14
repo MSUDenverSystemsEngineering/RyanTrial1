@@ -62,15 +62,15 @@ Try {
 	##* VARIABLE DECLARATION
 	##*===============================================
 	## Variables: Application
-	[string]$appVendor = ''
-	[string]$appName = ''
-	[string]$appVersion = ''
-	[string]$appArch = ''
+	[string]$appVendor = "Ryan's Widgets"
+	[string]$appName = 'Trial 1'
+	[string]$appVersion = '1.0'
+	[string]$appArch = 'x64'
 	[string]$appLang = 'EN'
 	[string]$appRevision = '01'
 	[string]$appScriptVersion = '1.0.0'
-	[string]$appScriptDate = ''
-	[string]$appScriptAuthor = '<authorname>'
+	[string]$appScriptDate = '03/14/2023'
+	[string]$appScriptAuthor = 'Ryan McKenna'
 	##*===============================================
 	## Variables: Install Titles (Only set here to override defaults set by the toolkit)
 	[string]$installName = ''
@@ -138,6 +138,7 @@ Try {
 		}
 
 		## <Perform Installation tasks here>
+		Copy-File -Path "$dirFiles\HelloWorld.txt" -Destination $envCommonDesktop
 
 
 		##*===============================================
