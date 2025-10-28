@@ -66,4 +66,5 @@ jobs:
             Write-Host "Error details: $($_.Exception | Format-List -Force | Out-String)"
             exit 1
           }
-          dir
+          $results = dir
+          $results
