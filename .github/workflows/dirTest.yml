@@ -1,0 +1,26 @@
+name: Get dir info
+
+on:
+  push:
+    branches:
+    - main
+    - release/*
+  pull_request:
+    branches:
+    - main
+  workflow_dispatch:
+
+permissions:
+  id-token: write # Required for OIDC
+  contents: read
+
+jobs:
+  connect-entra:
+    runs-on: windows-latest
+    environment: production
+    steps:
+      - name: Get dir
+        shell: pwsh
+        run: |
+          $results = dir
+          $results
