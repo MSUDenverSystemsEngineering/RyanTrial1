@@ -22,7 +22,7 @@ jobs:
       - name: Install Microsoft Entra PowerShell module
         shell: pwsh
         run: |
-          Install-Module -Name Microsoft.Entra -Repository PSGallery -Scope CurrentUser -Force -AllowClobber
+          Install-Module -Name Microsoft.Graph -Repository PSGallery -Scope CurrentUser -Force -AllowClobber
 
       - name: Get OIDC token and authenticate to Microsoft Graph
         shell: pwsh
@@ -56,18 +56,13 @@ jobs:
             $secureAccessToken = ConvertTo-SecureString $tokenResponse.access_token -AsPlainText -Force
             
             # Connect to Microsoft Graph using the token as SecureString
-            Connect-Entra -AccessToken $secureAccessToken
+            Connect-MgGraph -AccessToken $secureAccessToken
             
             # Test the connection with a query
-            # Get-EntraGroup -Top 5
+            Get-MgGroup -Top 5
           }
           catch {
             Write-Error "Authentication failed: $_"
             Write-Host "Error details: $($_.Exception | Format-List -Force | Out-String)"
             exit 1
           }
-      - name: do work
-        shell: pwsh
-        run: |
-          $res = get-mgdevicemanagementmanageddevice -filter "startswith(osversion, '10.0.2')" -all
-          $res.count
