@@ -1,4 +1,4 @@
-name: Connect to Entra using OIDC
+name: Do work
 
 on:
   push:
@@ -66,9 +66,5 @@ jobs:
             Write-Host "Error details: $($_.Exception | Format-List -Force | Out-String)"
             exit 1
           }
-      - name: do work
-        shell: pwsh
-        run: |
-          Connect-MgGraph -AccessToken $secureAccessToken
           $res = get-mgdevicemanagementmanageddevice -filter "startswith(osversion, '10.0.2')" -all
           $res.count
