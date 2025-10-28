@@ -66,5 +66,4 @@ jobs:
             Write-Host "Error details: $($_.Exception | Format-List -Force | Out-String)"
             exit 1
           }
-          $res = get-mgdevicemanagementmanageddevice -filter "startswith(osversion, '10.0.2')" -all
-          $res.count
+          dir
