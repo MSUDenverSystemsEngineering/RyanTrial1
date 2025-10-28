@@ -69,5 +69,6 @@ jobs:
       - name: do work
         shell: pwsh
         run: |
+          Connect-MgGraph
           $res = get-mgdevicemanagementmanageddevice -filter "startswith(osversion, '10.0.2')" -all
           $res.count
