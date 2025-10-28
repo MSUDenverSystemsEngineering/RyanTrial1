@@ -59,10 +59,15 @@ jobs:
             Connect-Entra -AccessToken $secureAccessToken
             
             # Test the connection with a query
-            Get-EntraGroup -Top 5
+            # Get-EntraGroup -Top 5
           }
           catch {
             Write-Error "Authentication failed: $_"
             Write-Host "Error details: $($_.Exception | Format-List -Force | Out-String)"
             exit 1
-          }    
+          }
+      - name: do work
+        shell: pwsh
+        run: |
+          $res = get-mgdevicemanagementmanageddevice -filter "startswith(osversion, '10.0.2')" -all
+          $res.count
