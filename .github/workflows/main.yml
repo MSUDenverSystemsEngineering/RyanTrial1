@@ -69,6 +69,6 @@ jobs:
       - name: do work
         shell: pwsh
         run: |
-          Connect-MgGraph
+          Connect-MgGraph -AccessToken $secureAccessToken
           $res = get-mgdevicemanagementmanageddevice -filter "startswith(osversion, '10.0.2')" -all
           $res.count
